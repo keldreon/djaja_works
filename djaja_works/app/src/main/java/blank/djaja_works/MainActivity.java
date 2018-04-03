@@ -1,6 +1,7 @@
 package blank.djaja_works;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-	private static final String Tag ="Home Ativity";
+	private static final String Tag ="Home Activity";
     //private SectionPagerAdapter mSectionPagerAdapter;
     private ViewPager viewPager;
     public Toolbar toolbar;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     };
     //private SessionManager session;
     //private DatabaseHelper db;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +43,17 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
  
-        /*tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);*/
-        //setupTabIcons();
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
     }
 
-    /*private void setupTabIcons() {
+    private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-    }*/
+        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
+    }
 
     private void setupViewPager(ViewPager viewPager) {
         /*ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
