@@ -1,5 +1,6 @@
 package blank.djaja_works;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     //private SessionManager session;
     //private DatabaseHelper db;
     private TabLayout tabLayout;
+    private Intent nIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
- 
+
+
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
@@ -57,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         /*ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
-        adapter.addFragment(new ThreeFragment(), "THREE");
+        adapter.addFragment(new OneFragment(), "Sumpah");
+        adapter.addFragment(new TwoFragment(), "Investment");
+        adapter.addFragment(new ThreeFragment(), "News");
+        adapter.addFragment(new FourFragment(), "More");
         viewPager.setAdapter(adapter);*/
     }
 

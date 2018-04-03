@@ -6,6 +6,13 @@
     <string name="text_login">Login</string>
     <string name="text_not_member">Bukan Anggota? Daftar Disini.</string>
     <string name="text_forget">Lupa Password?</string>
+    <string name="text_Username">Username</string>
+    <string name="text_Umur">Umur</string>
+    <string name="text_JenisKelamin">Jenis Kelamin</string>
+    <string name="text_nKtp">No.Ktp</string>
+    <string name="text_nRekening">No.Rekening</string>
+    <string name="text_Register">Daftarkan.</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
