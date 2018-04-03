@@ -9,12 +9,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import blank.djaja_works.MainActivity;
 import blank.djaja_works.R;
+import blank.djaja_works.models.DatabaseHelper;
+import blank.djaja_works.models.SessionManager;
 
 public class login extends AppCompatActivity {
     //public Toolbar toolbar;
     private TextView reg;
+    private DatabaseHelper dbhelper;
     private TextView lupa;
     private EditText email;
     private EditText pwd;
@@ -22,6 +27,7 @@ public class login extends AppCompatActivity {
     private Button btnLogin;
     private String nama;
     private String pwdi;
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,17 @@ public class login extends AppCompatActivity {
             finish();
         }else{
             Toast.makeText(getApplicationContext(), "Password " +password+ " Salah!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void finis(String response){
+        if(Objects.equals(response, "true")) {
+            session.setLogin(true);
+            Intent intent = new Intent(login.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }else{
+            Toast.makeText(getApplicationContext(), "Akun sudah dipakai.", Toast.LENGTH_LONG).show();
         }
     }
 }
