@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/GreyLight"
+    android:clickable="false"
+    android:paddingBottom="@dimen/row_padding"
+    android:paddingLeft="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin"
+    android:paddingTop="@dimen/row_padding">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="212sp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/text_deskripsiUsaha"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/contact_name" />
+
+    <TextView
+        android:id="@+id/headline"
+        android:layout_width="212sp"
+        android:layout_height="30sp"
+        android:layout_below="@id/title"
+        android:text="@string/text_namaUsaha"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/contact_number" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true">
+
+        <Button
+            android:id="@+id/btnInvest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:text="Investasi"
+            android:textAlignment="center" />
+    </RelativeLayout>
+
+</RelativeLayout>

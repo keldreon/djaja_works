@@ -13,6 +13,11 @@
     <string name="text_nRekening">No.Rekening</string>
     <string name="text_Register">Daftarkan.</string>
 
+    <!--list-->
+    <string name="text_deskripsiImg">Gambar</string>
+    <string name="text_namaUsaha">Nama Usaha</string>
+    <string name="text_deskripsiUsaha">Deskripsi</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
