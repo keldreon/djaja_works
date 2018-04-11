@@ -42,8 +42,8 @@ public class login extends AppCompatActivity {
         if(session.isLoggedIn()){
             session.setLogin(true);
             //session.createLoginSession(h.getEmail(),h.getStatus());
-            Intent intent = new Intent(login.this, MainActivity.class);
-            startActivity(intent);
+            nIntent = new Intent(login.this, MainActivity.class);
+            startActivity(nIntent);
             finish();
         }
 
@@ -85,9 +85,10 @@ public class login extends AppCompatActivity {
         String cek1 = h.getEmail();
         String cek2 = h.getPassword();
         String cek3 = h.getStatus();
-        Toast.makeText(getApplicationContext(), "Detail : "+cek1+", "+cek2+", "+cek3, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Detail : "+cek1+", "+cek2+", "+cek3, Toast.LENGTH_LONG).show();
         if(nama.equals(cek1) && password.equals(cek2)){
-            Toast.makeText(getApplicationContext(), "Detail : "+cek1+", "+cek2+", "+cek3, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Detail : "+cek1+", "+cek2+", "+cek3, Toast.LENGTH_LONG).show();
+            session.setLogin(true);
             finis(h);
         }else{
             Toast.makeText(getApplicationContext(), "Email atau Username Salah!", Toast.LENGTH_LONG).show();
@@ -96,15 +97,10 @@ public class login extends AppCompatActivity {
 
     public void finis(Akun h){
         /*if(Objects.equals(response, "true")) {*/
-        if(session.isLoggedIn()){
-            session.setLogin(true);
-            session.createLoginSession(h.getEmail(),h.getStatus());
-            Intent intent = new Intent(login.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }/*else{
-            Toast.makeText(getApplicationContext(), "Akun sudah dipakai.", Toast.LENGTH_LONG).show();
-        }*/
+        session.createLoginSession(h.getEmail(),h.getStatus());
+        nIntent = new Intent(login.this, MainActivity.class);
+        startActivity(nIntent);
+        finish();
     }
 
     private void showDialog() {

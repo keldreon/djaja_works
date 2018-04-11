@@ -20,17 +20,19 @@ public class register extends AppCompatActivity {
     public Toolbar tb;
     private Spinner jk;
     private Spinner st;
-    private String stVal;
-    private String jkVal;
     private Button btnDaftar;
     private EditText em;
+    private EditText nL;
     private EditText pss;
     private EditText umr;
     private EditText nktp;
     private EditText nRek;
     private String unVal;
     private String pssVal;
+    private String nlVal;
     private String umrVal;
+    private String stVal;
+    private String jkVal;
     private String nktpVal;
     private String rekVal;
     private DatabaseHelper dbhelper;
@@ -47,7 +49,11 @@ public class register extends AppCompatActivity {
         tb = findViewById(R.id.toolbar);
         tb.setTitle(R.string.text_Register);
         setSupportActionBar(tb);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+         // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         //end toolbar
         String jK[] = new String[]{
                 "Laki-Laki", "Perempuan"
@@ -91,6 +97,7 @@ public class register extends AppCompatActivity {
             }
         });
         em = findViewById(R.id.emailReg);
+        nL = findViewById(R.id.namaReg);
         pss = findViewById(R.id.pwd);
         umr= findViewById(R.id.umur);
         nktp = findViewById(R.id.noKTP);
@@ -106,12 +113,14 @@ public class register extends AppCompatActivity {
                 umrVal = umr.getText().toString();
                 nktpVal = nktp.getText().toString();
                 rekVal = nRek.getText().toString();
-                Akun x = new Akun(unVal, pssVal, jkVal, umrVal, nktpVal, rekVal, stVal);
-                String ts = x.getEmail();
-                daftarkan(x);
-                if(!unVal.isEmpty() && !pssVal.isEmpty() && !nktpVal.isEmpty() && !umrVal.isEmpty() && !rekVal.isEmpty()){
+                nlVal = nL.getText().toString();
+                //(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String st)
+                //String ts = x.getEmail();
+                if(!unVal.isEmpty() && !pssVal.isEmpty() && !nlVal.isEmpty() && !umrVal.isEmpty() && !nktpVal.isEmpty()  && !rekVal.isEmpty()){
                     //Toast.makeText(getApplicationContext(), "Masih ada inputan yang kosong", Toast.LENGTH_LONG).show();
-                    Toast.makeText(getApplicationContext(),ts,Toast.LENGTH_SHORT).show();
+                    Akun x = new Akun(unVal,pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, stVal);
+                    daftarkan(x);
+                    //Toast.makeText(getApplicationContext(),ts,Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getApplicationContext(),"Inputan Masih Ada Yang Kosong.",Toast.LENGTH_SHORT).show();
                 }
@@ -120,9 +129,19 @@ public class register extends AppCompatActivity {
     }
 
     protected void daftarkan(Akun x){
-        //daftarAkun(String email, String jK, String nktp, String umr, String nrek, String pass, String st){
-        dbhelper.daftarAkun(x.getEmail(), x.getJk(), x.getNoKtp(), x.getUmur(), x.getNoRek(), x.getPassword(), x.getStatus());
+        //daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String st)
+        dbhelper.daftarAkun(x.getEmail(), x.getPassword(), x.getNama_lengkap(), x.getJk(), x.getUmur(), x.getNoKtp(), x.getNoRek(), x.getStatus());
         int b = dbhelper.getAkunCount();
-        Toast.makeText(this, "Jumlah akun = "+b, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Akun = "+x.getEmail()+" Terdaftar, Jumlah akun = "+b, Toast.LENGTH_SHORT).show();
     }
+
+   /* @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
+    }*/
 }

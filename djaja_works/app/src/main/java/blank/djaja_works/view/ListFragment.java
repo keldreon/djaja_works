@@ -2,12 +2,23 @@ package blank.djaja_works.view;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import blank.djaja_works.R;
+import blank.djaja_works.adapter.MyDividerItemDecoration;
+import blank.djaja_works.adapter.adapter;
+import blank.djaja_works.models.DatabaseHelper;
+import blank.djaja_works.models.Investment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,13 +37,18 @@ public class ListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private adapter mAdapter;
+    private ArrayList<Investment> invList = new ArrayList<>();
+    private CoordinatorLayout cdLayout;
+    private RecyclerView rcView;
+    private TextView noListView;
+    private DatabaseHelper db;
 
     private OnFragmentInteractionListener mListener;
 
     public ListFragment() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -64,7 +80,28 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        cdLayout = view.findViewById(R.id.coordinator_layout);
+        rcView = view.findViewById(R.id.recycler_view);
+        noListView = view.findViewById(R.id.not_found);
+        db = new DatabaseHelper(getContext());
+        mAdapter = new adapter(invList,getContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        rcView.setLayoutManager(mLayoutManager);
+        rcView.setItemAnimator(new DefaultItemAnimator());
+        rcView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));
+        rcView.setAdapter(mAdapter);
+        toggleEmptyNotes();
+
         return inflater.inflate(R.layout.fragment_list, container, false);
+    }
+
+    private void toggleEmptyNotes() {
+        if (db.getInvCount() > 0) {
+            noListView.setVisibility(View.GONE);
+        } else {
+            noListView.setVisibility(View.VISIBLE);
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,5 +141,15 @@ public class ListFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
     }
 }

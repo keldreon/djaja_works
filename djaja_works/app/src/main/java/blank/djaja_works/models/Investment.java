@@ -5,13 +5,14 @@ public class Investment {
     protected static final String TABLE_NAME = "investment";
     protected static final String COL1 = "ID_INVESTASI";
     protected static final String COL2 = "USERNAME";
+    //protected static final String COL1 = "ID_AKUN";
     protected static final String COL3 = "NAMA_USAHA";
     protected static final String COL4 = "DESKRIPSI";
     protected static final String COL5 = "NOMINAL";
     protected static final String COL6 = "STATUS";
 
     private int id;
-    private String uname;
+    private String nama_lengkap;
     private String namaUsaha;
     private String deskripsi;
     private String nominal;
@@ -19,21 +20,23 @@ public class Investment {
 
     protected static final String createTable = "CREATE TABLE "
             + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, "
-            + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT, " + ")";
+            + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT " + ")";
 
     public Investment(){}
 
     public Investment(int id, String un, String nU, String d, String nom, String st){
         this.id = id;
-        this.uname = un;
+        this.nama_lengkap = un;
         this.namaUsaha = nU;
         this.deskripsi = d;
         this.nominal = nom;
         this.status = st;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    //public Investment(int id, String un, String nU, String d, String nom, String st, String id_akun){
+
+    public void setNama_lengkap(String uname) {
+        this.nama_lengkap = uname;
     }
 
     public void setStatus(String status) {
@@ -60,8 +63,8 @@ public class Investment {
         return id;
     }
 
-    public String getUname() {
-        return uname;
+    public String getNama_lengkap() {
+        return nama_lengkap;
     }
 
     public String getDeskripsi() {

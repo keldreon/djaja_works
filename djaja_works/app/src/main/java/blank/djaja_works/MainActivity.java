@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import blank.djaja_works.view.About;
+import blank.djaja_works.view.Kelola;
 import blank.djaja_works.view.ListFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new About(), "Sumpah");
         adapter.addFragment(new ListFragment(), "Investment");
         adapter.addFragment(new About(), "News");
-        adapter.addFragment(new About(), "More");
+        adapter.addFragment(new Kelola(), "More");
         viewPager.setAdapter(adapter);
     }
 

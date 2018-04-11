@@ -25,8 +25,7 @@ public class adapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_items, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_items, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -39,6 +38,7 @@ public class adapter extends RecyclerView.Adapter<ViewHolder> {
         holder.btnInvest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
     }

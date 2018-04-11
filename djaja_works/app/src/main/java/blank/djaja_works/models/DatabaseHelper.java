@@ -23,51 +23,57 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Akun.createTable);
+        db.execSQL(Investment.createTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + Akun.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Investment.TABLE_NAME);
         onCreate(db);
     }
 
-    public void daftarAkun(String email, String jK, String nktp, String umr, String nrek, String pass, String st){
+    public void daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String st){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Akun.COL2, email);
-        values.put(Akun.COL3, jK);
-        values.put(Akun.COL4, nktp);
+        values.put(Akun.COL3, nL);
+        values.put(Akun.COL4, jK);
         values.put(Akun.COL5, umr);
-        values.put(Akun.COL6, nrek);
-        values.put(Akun.COL7, pass);
-        values.put(Akun.COL8, st);
-        Log.d(TAG, "Hasil " +values.get(Akun.COL2)+", "+values.get(Akun.COL3));
+        values.put(Akun.COL6, nktp);
+        values.put(Akun.COL7, nrek);
+        values.put(Akun.COL8, pass);
+        values.put(Akun.COL9, pass);
+        Log.d(TAG, "Hasil " +values.get(Akun.COL2)+", "+values.get(Akun.COL9));
         db.insert(Akun.TABLE_NAME,null, values);
         db.close();
     }
 
     public Akun getInfoAkun(String nama, String pass){
         SQLiteDatabase db = this.getWritableDatabase();
+        //nama == email
 
-        String selectQuery = "SELECT  * FROM "+ Akun.TABLE_NAME + " WHERE "+ Akun.COL2 +" == "+nama+" && "+Akun.COL7+ " == "+pass;
+        String selectQuery = "SELECT  * FROM "+ Akun.TABLE_NAME + " WHERE "+ Akun.COL2 +" == "+nama+" && "+Akun.COL8+ " == "+pass;
         /*(int id, String email, String pass, String jK, String umur, String nktp, String nrek, String st)*/
 
         Cursor cr = db.query(Akun.TABLE_NAME,
-                new String[]{Akun.COL1, Akun.COL2, Akun.COL3, Akun.COL4, Akun.COL5, Akun.COL6, Akun.COL7, Akun.COL8},
+                new String[]{Akun.COL1, Akun.COL2, Akun.COL3, Akun.COL4, Akun.COL5, Akun.COL6, Akun.COL7, Akun.COL8, Akun.COL9},
                 Akun.COL2 + "=?", new String[]{String.valueOf(nama)},null,null,null);
 
         if(cr != null){
             cr.moveToFirst();
         }
+        //public Akun(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String st)
 
         Akun akun = new Akun(cr.getInt(cr.getColumnIndex(Akun.COL1)),
                 cr.getString(cr.getColumnIndex(Akun.COL2)),
-                cr.getString(cr.getColumnIndex(Akun.COL7)),
+                cr.getString(cr.getColumnIndex(Akun.COL8)),
                 cr.getString(cr.getColumnIndex(Akun.COL3)),
+                cr.getString(cr.getColumnIndex(Akun.COL4)),
                 cr.getString(cr.getColumnIndex(Akun.COL5)),
                 cr.getString(cr.getColumnIndex(Akun.COL6)),
-                cr.getString(cr.getColumnIndex(Akun.COL4)),
-                cr.getString(cr.getColumnIndex(Akun.COL8)));
+                cr.getString(cr.getColumnIndex(Akun.COL7)),
+                cr.getString(cr.getColumnIndex(Akun.COL9)));
         //(int id, String uname, String email, String pass, String jK, String nktp, String nrek, String st)
         cr.close();
         return akun;
@@ -111,11 +117,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues v = new ContentValues();
         v.put(Akun.COL2, akun.getEmail());
-        v.put(Akun.COL3, akun.getJk());
-        v.put(Akun.COL4, akun.getNoKtp());
+        v.put(Akun.COL3, akun.getNama_lengkap());
+        v.put(Akun.COL4, akun.getJk());
         v.put(Akun.COL5, akun.getUmur());
-        v.put(Akun.COL6, akun.getNoRek());
-        v.put(Akun.COL7, akun.getPassword());
+        v.put(Akun.COL6, akun.getNoKtp());
+        v.put(Akun.COL7, akun.getNoRek());
+        v.put(Akun.COL8, akun.getPassword());
 
         return db.update(Akun.TABLE_NAME, v, Akun.COL2 + " =? ",
                 new String[]{String.valueOf(akun.getEmail())});
@@ -136,10 +143,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             protected static final String COL4 = "DESKRIPSI";
             protected static final String COL5 = "NOMINAL";
             protected static final String COL6 = "STATUS";*/
+            //(int id, String un, String nU, String d, String nom, String st)
             do{
                 Investment ak = new Investment();
                 ak.setId(cr.getInt(cr.getColumnIndex(Investment.COL1)));
-                ak.setUname(cr.getString(cr.getColumnIndex(Investment.COL2)));
+                ak.setNama_lengkap(cr.getString(cr.getColumnIndex(Investment.COL2)));
                 ak.setNamaUsaha(cr.getString(cr.getColumnIndex(Investment.COL3)));
                 ak.setDeskripsi(cr.getString(cr.getColumnIndex(Investment.COL4)));
                 ak.setNominal(cr.getString(cr.getColumnIndex(Investment.COL5)));
