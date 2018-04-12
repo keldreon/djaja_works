@@ -1,2 +1,3 @@
 # djaja_works
-First Upload
+Update 11-04-18
+- Added SQLite Local Database for Account
