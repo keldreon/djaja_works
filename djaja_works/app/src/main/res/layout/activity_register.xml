@@ -26,7 +26,6 @@
         android:paddingRight="20dp"
         android:paddingTop="30sp"
         >
-        <!--Logo here-->
         <EditText
             android:id="@+id/emailReg"
             android:layout_width="match_parent"
