@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.add_usaha">
+    tools:context=".view.pengusaha.add_usaha">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -104,5 +104,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:text="@string/text_batal" />
-        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

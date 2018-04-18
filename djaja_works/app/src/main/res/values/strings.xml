@@ -13,6 +13,7 @@
     <string name="text_nRekening">No.Rekening</string>
     <string name="text_Register">Daftarkan.</string>
     <string name="text_batal">Batalkan</string>
+    <string name="text_cancel">Batal</string>
 
     <!--list-->
     <string name="text_deskripsiImg">Gambar</string>
@@ -35,5 +36,15 @@
     <string name="text_daftarUsaha">Daftarkan</string>
     <string name="text_noteUsaha">Pastikan Usaha yang anda bangun minimal 1 bulan.</string>
 
+
+    <!--Teks di topup-->
+    <string name="text_judulIsiUlang">Top Up Djaya Cash</string>
+    <string name="blank">_____</string>
+    <string name="Nama">Nama : </string>
+    <string name="Cash">Uang :</string>
+    <string name="text_inVoucher">Masukkan Kode Voucher</string>
+    <string name="text_hintVoucher">Kode Voucher</string>
+    <string name="text_conCode">qxy6372iihqb</string>
+    <string name="text_nTopup">Topup</string>
 
 </resources>

@@ -2,6 +2,7 @@ package blank.djaja_works.models;
 
 public class Investment {
     //Wilayah Investment
+    //data investasi
     protected static final String TABLE_NAME = "investment";
     protected static final String COL1 = "ID_INVESTASI";
     protected static final String COL2 = "USERNAME";

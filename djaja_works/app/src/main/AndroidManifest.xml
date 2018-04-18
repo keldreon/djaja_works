@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".view.register" />
-        <activity android:name=".view.add_usaha"></activity>
+        <activity android:name=".view.pengusaha.add_usaha" />
+        <activity android:name=".view.topup"></activity>
     </application>
 
 </manifest>

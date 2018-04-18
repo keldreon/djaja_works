@@ -1,4 +1,4 @@
-package blank.djaja_works.view;
+package blank.djaja_works.view.pengusaha;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -123,4 +123,19 @@ public class SessionManager {
     public void setLogin(boolean login) {
         this.login = login;
     }
+
+    public String getNama(){
+        String baru = pref.getString("name","");
+        return baru;
+    }
+
+    public String getStatus(){
+        String baru = pref.getString("status","");
+        return baru;
+    }
+
+    public String getKeyEmail(){
+        String baru = pref.getString("email","");
+        return baru;
+    }
 }
