@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String st){
+    public void daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String st, String nom){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Akun.COL2, email);
@@ -43,7 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(Akun.COL6, nktp);
         values.put(Akun.COL7, nrek);
         values.put(Akun.COL8, pass);
-        values.put(Akun.COL9, pass);
+        values.put(Akun.COL9, st);
+        values.put(Akun.COL10, nom);
         Log.d(TAG, "Hasil " +values.get(Akun.COL2)+", "+values.get(Akun.COL9));
         db.insert(Akun.TABLE_NAME,null, values);
         db.close();
@@ -57,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         /*(int id, String email, String pass, String jK, String umur, String nktp, String nrek, String st)*/
 
         Cursor cr = db.query(Akun.TABLE_NAME,
-                new String[]{Akun.COL1, Akun.COL2, Akun.COL3, Akun.COL4, Akun.COL5, Akun.COL6, Akun.COL7, Akun.COL8, Akun.COL9},
+                new String[]{Akun.COL1, Akun.COL2, Akun.COL3, Akun.COL4, Akun.COL5, Akun.COL6, Akun.COL7, Akun.COL8, Akun.COL9, Akun.COL10},
                 Akun.COL2 + "=?", new String[]{String.valueOf(nama)},null,null,null);
 
         if(cr != null){
@@ -73,7 +74,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 cr.getString(cr.getColumnIndex(Akun.COL5)),
                 cr.getString(cr.getColumnIndex(Akun.COL6)),
                 cr.getString(cr.getColumnIndex(Akun.COL7)),
-                cr.getString(cr.getColumnIndex(Akun.COL9)));
+                cr.getString(cr.getColumnIndex(Akun.COL9)),
+                cr.getString(cr.getColumnIndex(Akun.COL10)));
         //(int id, String uname, String email, String pass, String jK, String nktp, String nrek, String st)
         cr.close();
         return akun;
@@ -96,7 +98,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 ak.setNoKtp(cr.getString(cr.getColumnIndex(Akun.COL4)));
                 ak.setUmur(cr.getString(cr.getColumnIndex(Akun.COL5)));
                 ak.setNoRek(cr.getString(cr.getColumnIndex(Akun.COL6)));
-                ak.setStatus(cr.getString(cr.getColumnIndex(Akun.COL8)));
+                ak.setStatus(cr.getString(cr.getColumnIndex(Akun.COL9)));
+                ak.setNom(cr.getString(cr.getColumnIndex(Akun.COL10)));
                 akun.add(ak);
             }while (cr.moveToNext());
         }
@@ -123,6 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         v.put(Akun.COL6, akun.getNoKtp());
         v.put(Akun.COL7, akun.getNoRek());
         v.put(Akun.COL8, akun.getPassword());
+        v.put(Akun.COL10, akun.getStatus());
 
         return db.update(Akun.TABLE_NAME, v, Akun.COL2 + " =? ",
                 new String[]{String.valueOf(akun.getEmail())});
@@ -137,21 +141,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         Cursor cr = db.rawQuery(sQuery, null);
 
         if(cr.moveToFirst()){
-            /*protected static final String COL1 = "ID_INVESTASI";
-            protected static final String COL2 = "USERNAME";
-            protected static final String COL3 = "NAMA_USAHA";
-            protected static final String COL4 = "DESKRIPSI";
-            protected static final String COL5 = "NOMINAL";
-            protected static final String COL6 = "STATUS";*/
-            //(int id, String un, String nU, String d, String nom, String st)
+            //public Investment(int id, String un, String nU, String d, int nom, int gj, String st)
             do{
                 Investment ak = new Investment();
                 ak.setId(cr.getInt(cr.getColumnIndex(Investment.COL1)));
                 ak.setNama_lengkap(cr.getString(cr.getColumnIndex(Investment.COL2)));
                 ak.setNamaUsaha(cr.getString(cr.getColumnIndex(Investment.COL3)));
                 ak.setDeskripsi(cr.getString(cr.getColumnIndex(Investment.COL4)));
-                ak.setNominal(cr.getString(cr.getColumnIndex(Investment.COL5)));
-                ak.setStatus(cr.getString(cr.getColumnIndex(Investment.COL6)));
+                ak.setgBulanan(cr.getInt(cr.getColumnIndex(Investment.COL5)));
+                ak.setNominal(cr.getInt(cr.getColumnIndex(Investment.COL6)));
+                ak.setStatus(cr.getString(cr.getColumnIndex(Investment.COL7)));
                 inv.add(ak);
             }while (cr.moveToNext());
         }
@@ -174,9 +173,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 cr.getString(cr.getColumnIndex(Investment.COL2)),
                 cr.getString(cr.getColumnIndex(Investment.COL3)),
                 cr.getString(cr.getColumnIndex(Investment.COL4)),
-                cr.getString(cr.getColumnIndex(Investment.COL5)),
-                cr.getString(cr.getColumnIndex(Investment.COL6)));
-        //(int id, String uname, String email, String pass, String jK, String nktp, String nrek, String st)
+                cr.getInt(cr.getColumnIndex(Investment.COL5)),
+                cr.getInt(cr.getColumnIndex(Investment.COL6)),
+                cr.getString(cr.getColumnIndex(Investment.COL7)));
         cr.close();
         return inv;
     }
@@ -188,5 +187,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         int count = cr.getCount();
         return count;
+    }
+
+    public void daftarUsaha(String un, String nU, String d, int nom, int gj, String st){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Investment.COL2, un);
+        values.put(Investment.COL3, nU);
+        values.put(Investment.COL4, d);
+        values.put(Investment.COL5, nom);
+        values.put(Investment.COL6, gj);
+        values.put(Investment.COL7, st);
+        Log.d(TAG, "Hasil " +values.get(Investment.COL2)+", "+values.get(Investment.COL3));
+        db.insert(Investment.TABLE_NAME,null, values);
+        db.close();
     }
 }

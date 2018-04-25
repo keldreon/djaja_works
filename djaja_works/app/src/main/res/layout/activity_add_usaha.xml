@@ -44,7 +44,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorGrey"
             android:hint="@string/text_deskripsiUsaha"
-            android:inputType="textPassword"
+            android:inputType="textLongMessage"
             android:padding="10dp"
             android:singleLine="true" />
 
@@ -55,7 +55,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorGrey"
             android:hint="@string/text_uBulanan"
-            android:inputType="text"
+            android:inputType="number"
             android:padding="10dp"
             android:singleLine="true" />
 
@@ -66,9 +66,19 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorGrey"
             android:hint="@string/text_modal"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:padding="10dp"
             android:singleLine="true" />
+
+        <!--<Spinner
+            android:id="@+id/katInvest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorGrey"
+            android:padding="10dp"
+            android:popupBackground="@color/colorWhite">
+        </Spinner>-->
 
     </LinearLayout>
 

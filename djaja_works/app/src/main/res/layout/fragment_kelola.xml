@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp">
 
         <Button
-            android:id="@+id/btnTest"
+            android:id="@+id/btnAddUsaha"
             android:gravity="left"
             android:layout_gravity="left"
             android:layout_weight="1"
@@ -26,10 +26,11 @@
             android:textAlignment="center"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:text="Simpan" />
+            android:text="@string/text_judulAddUsaha"
+            android:visibility="gone"/>
 
         <Button
-            android:id="@+id/btnTes2"
+            android:id="@+id/btnIsi"
             android:gravity="right"
             android:layout_gravity="left"
             android:layout_weight="1"
@@ -41,7 +42,7 @@
             android:textAlignment="center"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:text="Pinjam" />
+            android:text="@string/text_nTopup" />
     </LinearLayout>
 
     <LinearLayout

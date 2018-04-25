@@ -91,7 +91,9 @@ public class login extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Detail : "+cek1+", "+cek2+", "+cek3, Toast.LENGTH_LONG).show();
                 session.setLogin(true);
                 finis(h);
-            } else {
+            } else if (cek1.isEmpty() && cek2.isEmpty()){
+                Toast.makeText(getApplicationContext(), "Email atau Username Tidak Terdaftar!", Toast.LENGTH_LONG).show();
+            }else{
                 Toast.makeText(getApplicationContext(), "Email atau Username Salah!", Toast.LENGTH_LONG).show();
             }
         }else{
@@ -101,7 +103,7 @@ public class login extends AppCompatActivity {
 
     public void finis(Akun h){
         /*if(Objects.equals(response, "true")) {*/
-        session.createLoginSession(h.getEmail(),h.getStatus());
+        session.createLoginSession(h.getEmail(),h.getNama_lengkap(),h.getStatus());
         nIntent = new Intent(login.this, MainActivity.class);
         startActivity(nIntent);
         finish();

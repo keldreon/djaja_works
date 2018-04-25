@@ -7,18 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import blank.djaja_works.R;
 import blank.djaja_works.models.Investment;
 
 public class adapter extends RecyclerView.Adapter<ViewHolder> {
-    private ArrayList<Investment> invList;
+    private List<Investment> invList;
     private Context context;
     private Intent it;
     private View itemView;
 
-    public adapter(ArrayList<Investment> inv, Context con){
+    public adapter(List<Investment> inv, Context con){
         invList = inv;
         this.context = con;
     }
@@ -35,12 +35,14 @@ public class adapter extends RecyclerView.Adapter<ViewHolder> {
         //nanti pake db
         holder.tvNamaUsaha.setText(in.getNamaUsaha());
         holder.tvDeskripsi.setText(in.getDeskripsi());
-        holder.btnInvest.setOnClickListener(new View.OnClickListener() {
+
+        /*holder.btnInvest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        });
+        });*/
+        holder.setContext(context);
     }
 
     @Override

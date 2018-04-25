@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import blank.djaja_works.R;
 import blank.djaja_works.models.SessionManager;
+import blank.djaja_works.view.pengusaha.add_usaha;
 
 
 public class Kelola extends Fragment {
@@ -23,7 +24,11 @@ public class Kelola extends Fragment {
     private String mParam1;
     private String mParam2;
     private Button btnLogout;
+    private Button btnAddusaha;
     private SessionManager session;
+    private Intent intent;
+    private String mTes1;
+    private Button btntopUp;
 
     public Kelola() {
         // Required empty public constructor
@@ -70,6 +75,29 @@ public class Kelola extends Fragment {
                 logoutUser();
             }
         });
+
+        mTes1 = session.getStatus();
+        if(mTes1.equals("Pengusaha")) {
+            btnAddusaha = view.findViewById(R.id.btnAddUsaha);
+            btnAddusaha.setVisibility(view.VISIBLE);
+            btnAddusaha.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getContext(), add_usaha.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        btntopUp = view.findViewById(R.id.btnIsi);
+        btntopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getContext(), topup.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -83,15 +111,11 @@ public class Kelola extends Fragment {
         super.onLowMemory();
     }
 
-    public void Logout(){
-
-    }
-
     private void logoutUser() {
         session.setLogin(false);
         session.logoutUser();
         // Launching the login activity
-        Intent intent = new Intent(getActivity().getApplicationContext(), login.class);
+        intent = new Intent(getActivity().getApplicationContext(), login.class);
         startActivity(intent);
         getActivity().finish();
     }

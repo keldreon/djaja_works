@@ -60,7 +60,7 @@ public class register extends AppCompatActivity {
         };
 
         String status[] = new String[]{
-                "Investor", "Peminjam Modal"
+                "Investor", "Pengusaha"
         };
 
         jk = (Spinner) findViewById(R.id.jK);
@@ -118,7 +118,7 @@ public class register extends AppCompatActivity {
                 //String ts = x.getEmail();
                 if(!unVal.isEmpty() && !pssVal.isEmpty() && !nlVal.isEmpty() && !umrVal.isEmpty() && !nktpVal.isEmpty()  && !rekVal.isEmpty()){
                     //Toast.makeText(getApplicationContext(), "Masih ada inputan yang kosong", Toast.LENGTH_LONG).show();
-                    Akun x = new Akun(unVal,pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, stVal);
+                    Akun x = new Akun(unVal,pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, stVal,"0");
                     daftarkan(x);
                     //Toast.makeText(getApplicationContext(),ts,Toast.LENGTH_SHORT).show();
                 }else{
@@ -130,7 +130,7 @@ public class register extends AppCompatActivity {
 
     protected void daftarkan(Akun x){
         //daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String st)
-        dbhelper.daftarAkun(x.getEmail(), x.getPassword(), x.getNama_lengkap(), x.getJk(), x.getUmur(), x.getNoKtp(), x.getNoRek(), x.getStatus());
+        dbhelper.daftarAkun(x.getEmail(), x.getPassword(), x.getNama_lengkap(), x.getJk(), x.getUmur(), x.getNoKtp(), x.getNoRek(), x.getStatus(), x.getNom());
         int b = dbhelper.getAkunCount();
         Toast.makeText(this, "Akun = "+x.getEmail()+" Terdaftar, Jumlah akun = "+b, Toast.LENGTH_SHORT).show();
     }

@@ -26,6 +26,7 @@
     <string name="invest_not_available">Tidak Ada Investasi</string>
 
     <!--Teks di menu add_usaha-->
+    <string name="text_judulAddUsaha">Daftarkan Usaha</string>
     <string name="text_nUsaha">Nama Usaha</string>
     <string name="text_dUsaha">Deskripsi Usaha</string>
     <string name="text_Llat">Latitude</string>

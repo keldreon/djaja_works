@@ -9,27 +9,39 @@ public class Investment {
     //protected static final String COL1 = "ID_AKUN";
     protected static final String COL3 = "NAMA_USAHA";
     protected static final String COL4 = "DESKRIPSI";
-    protected static final String COL5 = "NOMINAL";
-    protected static final String COL6 = "STATUS";
+    protected static final String COL5 = "GAJI_BULANAN";
+    protected static final String COL6 = "NOMINAL";
+    protected static final String COL7 = "STATUS";
 
     private int id;
     private String nama_lengkap;
     private String namaUsaha;
     private String deskripsi;
-    private String nominal;
+    private int gBulanan;
+    private int nominal;
     private String status;
 
     protected static final String createTable = "CREATE TABLE "
             + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, "
-            + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT " + ")";
+            + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + COL6 + " INTEGER, " + COL7 + " TEXT "+")";
 
     public Investment(){}
 
-    public Investment(int id, String un, String nU, String d, String nom, String st){
+    public Investment(int id, String un, String nU, String d, int gj, int nom, String st){
         this.id = id;
         this.nama_lengkap = un;
         this.namaUsaha = nU;
         this.deskripsi = d;
+        this.gBulanan = gj;
+        this.nominal = nom;
+        this.status = st;
+    }
+
+    public Investment(String un, String nU, String d,  int gj, int nom, String st){
+        this.nama_lengkap = un;
+        this.namaUsaha = nU;
+        this.deskripsi = d;
+        this.gBulanan = gj;
         this.nominal = nom;
         this.status = st;
     }
@@ -52,7 +64,7 @@ public class Investment {
         this.namaUsaha = namaUsaha;
     }
 
-    public void setNominal(String nominal) {
+    public void setNominal(int nominal) {
         this.nominal = nominal;
     }
 
@@ -76,11 +88,19 @@ public class Investment {
         return namaUsaha;
     }
 
-    public String getNominal() {
+    public int getNominal() {
         return nominal;
     }
 
     public String getStatus() {
         return status;
+    }
+
+    public int getgBulanan() {
+        return gBulanan;
+    }
+
+    public void setgBulanan(int gBulanan) {
+        this.gBulanan = gBulanan;
     }
 }

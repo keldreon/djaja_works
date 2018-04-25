@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import blank.djaja_works.R;
 import blank.djaja_works.adapter.MyDividerItemDecoration;
@@ -38,7 +40,7 @@ public class ListFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private adapter mAdapter;
-    private ArrayList<Investment> invList = new ArrayList<>();
+    private List<Investment> invList = new ArrayList<>();
     private CoordinatorLayout cdLayout;
     private RecyclerView rcView;
     private TextView noListView;
@@ -81,23 +83,39 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+
         cdLayout = view.findViewById(R.id.coordinator_layout);
         rcView = view.findViewById(R.id.recycler_view);
         noListView = view.findViewById(R.id.not_found);
+
         db = new DatabaseHelper(getContext());
+
+        if(invList.size()!=db.getInvCount()){
+            invList.clear();
+        }
+        invList.addAll(db.getAllInvest());
+
         mAdapter = new adapter(invList,getContext());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         rcView.setLayoutManager(mLayoutManager);
         rcView.setItemAnimator(new DefaultItemAnimator());
-        rcView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));
+        rcView.addItemDecoration(new MyDividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL, 16));
         rcView.setAdapter(mAdapter);
+        /*int tes = db.getInvCount();
+        if (tes > 0) {
+            noListView.setVisibility(View.GONE);
+        } else {
+            noListView.setVisibility(View.VISIBLE);
+        }*/
+
         toggleEmptyNotes();
 
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        return view;
     }
 
     private void toggleEmptyNotes() {
-        if (db.getInvCount() > 0) {
+        int tes = db.getInvCount();
+        if (tes > 0) {
             noListView.setVisibility(View.GONE);
         } else {
             noListView.setVisibility(View.VISIBLE);
