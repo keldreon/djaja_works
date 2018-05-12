@@ -27,4 +27,14 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/contact_number" />
 
+    <Button
+        android:id="@+id/danai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="15dp"
+        android:background="#ffc107"
+        android:text="Danai" />
+
 </RelativeLayout>

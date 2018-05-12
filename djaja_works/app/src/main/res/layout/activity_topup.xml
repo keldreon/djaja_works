@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/colorPrimary"
+        android:background="#ffc107"
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="@color/colorBlack" />
@@ -96,7 +96,7 @@
                 android:padding="10sp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:background="@color/colorPrimary"
+                android:background="#ffc107"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/text_inVoucher"

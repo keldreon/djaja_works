@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             app:tabMode="fixed"
             app:tabGravity="fill"
-            android:background="@color/colorBrown"/>
+            android:background="#474443"/>
         </android.support.design.widget.AppBarLayout>
     </RelativeLayout>
 

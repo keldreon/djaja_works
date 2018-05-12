@@ -26,94 +26,191 @@
         android:paddingRight="20dp"
         android:paddingTop="30sp"
         >
-        <EditText
-            android:id="@+id/emailReg"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:hint="@string/hint_email"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/pwd"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon2" />
+
+            <EditText
+                android:id="@+id/emailReg"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:hint="@string/hint_pwd"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/namaReg"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon4" />
+
+            <EditText
+                android:id="@+id/pwd"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:hint="@string/hint_pwd"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:hint="@string/text_Username"
-            android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/umur"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon15" />
+
+            <EditText
+                android:id="@+id/namaReg"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:hint="@string/text_Username"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:hint="@string/text_Umur"
-            android:inputType="numberDecimal"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:orientation="horizontal">
 
-        <!--Harusnya pake spinner-->
-        <Spinner
-            android:id="@+id/jK"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon10" />
+
+            <EditText
+                android:id="@+id/umur"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:hint="@string/text_Umur"
+                android:inputType="numberDecimal"
+                android:padding="10dp"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:padding="10dp"
-            android:popupBackground="@color/colorPrimary">
+            android:orientation="horizontal">
 
-        </Spinner>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="68dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon3" />
 
-        <EditText
-            android:id="@+id/noKTP"
+            <!--Harusnya pake spinner-->
+            <Spinner
+                android:id="@+id/jK"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:padding="10dp"
+                android:popupBackground="#dcdddd">
+
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:hint="@string/text_nKtp"
-            android:inputType="number"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/noRekening"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon14" />
+
+            <EditText
+                android:id="@+id/noKTP"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:hint="@string/text_nKtp"
+                android:inputType="number"
+                android:padding="10dp"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:hint="@string/text_nRekening"
-            android:inputType="number"
-            android:padding="10dp"
-            android:singleLine="true" />
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/status"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icon7" />
+
+            <EditText
+                android:id="@+id/noRekening"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:hint="@string/text_nRekening"
+                android:inputType="number"
+                android:padding="10dp"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:padding="10dp"
-            android:popupBackground="@color/colorPrimary">
+            android:orientation="horizontal">
 
-        </Spinner>
+            <Spinner
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#dcdddd"
+                android:padding="10dp"
+                android:popupBackground="#dcdddd">
+
+            </Spinner>
+        </LinearLayout>
 
         <!-- Login Button -->
 
@@ -122,7 +219,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dip"
-            android:background="@color/colorBlack"
+            android:background="#474443"
             android:text="@string/text_Register"
             android:textColor="@color/colorWhite" />
     </LinearLayout>

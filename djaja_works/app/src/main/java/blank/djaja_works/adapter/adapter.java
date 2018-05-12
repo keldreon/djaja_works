@@ -35,6 +35,7 @@ public class adapter extends RecyclerView.Adapter<ViewHolder> {
         //nanti pake db
         holder.tvNamaUsaha.setText(in.getNamaUsaha());
         holder.tvDeskripsi.setText(in.getDeskripsi());
+        //holder.btnDanai.setT(in.getDeskripsi());
 
         /*holder.btnInvest.setOnClickListener(new View.OnClickListener() {
             @Override
