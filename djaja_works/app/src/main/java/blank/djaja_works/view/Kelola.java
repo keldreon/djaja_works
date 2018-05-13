@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import blank.djaja_works.profilakun;
 import blank.djaja_works.R;
 import blank.djaja_works.models.SessionManager;
 
@@ -25,9 +26,9 @@ public class Kelola extends Fragment {
     private Button btnLogout;
     private Button btnAddusaha;
     private SessionManager session;
-    private Intent intent;
+    private Intent intent, inten1;
     private String mTes1;
-    private Button btntopUp;
+    private Button btntopUp, btnProf;
 
     public Kelola() {
         // Required empty public constructor
@@ -87,6 +88,15 @@ public class Kelola extends Fragment {
                 }
             });
         }*/
+
+        btnProf = view.findViewById(R.id.btnProfil);
+        btnProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inten1 = new Intent(getContext(), profilakun.class);
+                startActivity(inten1);
+            }
+        });
 
         btntopUp = view.findViewById(R.id.btnIsi);
         btntopUp.setOnClickListener(new View.OnClickListener() {
