@@ -3,7 +3,7 @@ package blank.djaja_works;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Profile extends AppCompatActivity {
+public class profilakun extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

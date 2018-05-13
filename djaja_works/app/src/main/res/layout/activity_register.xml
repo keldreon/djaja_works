@@ -11,7 +11,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="44dp"
         android:background="@color/colorWhite"
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -129,16 +129,16 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="68dp"
-                android:scaleType="fitXY"
+                android:layout_height="49dp"
                 android:layout_weight="1"
+                android:scaleType="fitXY"
                 app:srcCompat="@drawable/icon3" />
 
             <!--Harusnya pake spinner-->
             <Spinner
                 android:id="@+id/jK"
                 android:layout_width="280dp"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:layout_marginBottom="10dp"
                 android:background="#dcdddd"
                 android:padding="10dp"
