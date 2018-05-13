@@ -1,5 +1,8 @@
 package blank.djaja_works.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Akun {
     //Wilayah User
     protected static final String TABLE_NAME = "user";
@@ -15,14 +18,14 @@ public class Akun {
     protected static final String COL10 = "NOMINAL";
     //public static String createTable;
 
-    private int id;
-    private String email;
-    private String nama_lengkap;
-    private String password;
-    private String jk;
-    private String umur;
-    private String noKtp;
-    private String noRek;
+    @SerializedName("id_peminjam") @Expose private int id;
+    @SerializedName("email_peminjam") @Expose private String email;
+    @SerializedName("nama_lengkap_peminjam") @Expose private String nama_lengkap;
+    @SerializedName("password_peminjam") @Expose private String password;
+    @SerializedName("jk_peminjam") @Expose private String jk;
+    @SerializedName("usia_peminjam") @Expose private String umur;
+    @SerializedName("n_ktp_peminjam") @Expose private String noKtp;
+    @SerializedName("n_rek_peminjam") @Expose private String noRek;
     //private String status;
     private String nom;
 

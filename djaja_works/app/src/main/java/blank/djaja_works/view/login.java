@@ -151,8 +151,8 @@ public class login extends AppCompatActivity {
                     ed.apply();*/
                     session.createLoginSession(accountsList.get(0).getEmail(),accountsList.get(0).getNama_lengkap());
                     Toast.makeText(c, "Akun "+accountsList.get(0).getEmail()+", "+ accountsList.get(0).getNama_lengkap(), Toast.LENGTH_LONG).show();
-                    //finish();
-                    //startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
                 else{
                     Toast.makeText(c, "Username, Email atau Password salah", Toast.LENGTH_LONG).show();
