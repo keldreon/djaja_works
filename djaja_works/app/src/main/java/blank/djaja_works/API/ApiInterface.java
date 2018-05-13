@@ -40,6 +40,9 @@ public interface ApiInterface {
     /*Account End*/
 
     /*InvestList*/
+    @GET("Peminjam_Api")
+    Call<List<Investment>> getInvestList();
+
     @FormUrlEncoded
     @DELETE("Peminjam_Api")
     Call<List<Investment>> deleteSpam(@Query("id_calon") int kode);
