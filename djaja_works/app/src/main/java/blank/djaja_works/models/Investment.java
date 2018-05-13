@@ -1,5 +1,8 @@
 package blank.djaja_works.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Investment {
     //Wilayah Investment
     //data investasi
@@ -13,10 +16,10 @@ public class Investment {
     protected static final String COL6 = "NOMINAL";
     protected static final String COL7 = "STATUS";
 
-    private int id;
-    private String nama_lengkap;
-    private String namaUsaha;
-    private String deskripsi;
+    @SerializedName("id_calon") @Expose private int id;
+    @SerializedName("nama_pengusaha") @Expose private String nama_lengkap;
+    @SerializedName("nama_usaha") @Expose private String namaUsaha;
+    @SerializedName("deskripsi") @Expose private String deskripsi;
     private int gBulanan;
     private int nominal;
     private String status;

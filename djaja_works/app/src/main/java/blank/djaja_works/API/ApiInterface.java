@@ -23,7 +23,7 @@ public interface ApiInterface {
     Call<Akun> postAkun(@Field("email") String email,
                            @Field("password") String password,
                            @Field("nama_lengkap") String nL,
-                           @Field("usia") int umur,
+                           @Field("usia") String umur,
                            @Field("jk") String jk,
                            @Field("n_ktp") String n_ktp,
                            @Field("n_rek") String n_rek);

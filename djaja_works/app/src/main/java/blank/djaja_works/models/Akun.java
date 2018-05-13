@@ -27,7 +27,7 @@ public class Akun {
     @SerializedName("n_ktp_peminjam") @Expose private String noKtp;
     @SerializedName("n_rek_peminjam") @Expose private String noRek;
     //private String status;
-    private String nom;
+    @SerializedName("Saldo_peminjam") @Expose private String nom;
 
     protected static final String createTable = "CREATE TABLE " + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT, " + COL7 + " TEXT, " + COL8 + " TEXT, " +COL10 + " TEXT" +")";
 

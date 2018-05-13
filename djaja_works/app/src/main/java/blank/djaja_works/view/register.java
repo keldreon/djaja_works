@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,9 +15,14 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import blank.djaja_works.API.ApiClient;
+import blank.djaja_works.API.ApiInterface;
 import blank.djaja_works.R;
 import blank.djaja_works.models.Akun;
 import blank.djaja_works.models.DatabaseHelper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class register extends AppCompatActivity {
     private static final String TAG = register.class.getSimpleName();
@@ -48,6 +54,9 @@ public class register extends AppCompatActivity {
         //public Akun(int id, String uname, String email, String pass, String jK, String umur, String nktp, String nrek, String st){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
 
         dbhelper = new DatabaseHelper(this);
         //Toolbar
@@ -124,7 +133,7 @@ public class register extends AppCompatActivity {
                 if (!unVal.isEmpty() && !pssVal.isEmpty() && !nlVal.isEmpty() && !umrVal.isEmpty() && !nktpVal.isEmpty() && !rekVal.isEmpty()) {
                     //Toast.makeText(getApplicationContext(), "Masih ada inputan yang kosong", Toast.LENGTH_LONG).show();
                     Akun x = new Akun(unVal, pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, "0");
-                    daftarkan(x);
+                    regisOL(x);
                     //Toast.makeText(getApplicationContext(),ts,Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Inputan Masih Ada Yang Kosong.", Toast.LENGTH_SHORT).show();
@@ -138,6 +147,26 @@ public class register extends AppCompatActivity {
         dbhelper.daftarAkun(x.getEmail(), x.getPassword(), x.getNama_lengkap(), x.getJk(), x.getUmur(), x.getNoKtp(), x.getNoRek(), x.getNom());
         int b = dbhelper.getAkunCount();
         Toast.makeText(this, "Akun = " + x.getEmail() + " Terdaftar, Jumlah akun = " + b, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void regisOL(Akun x){
+        showDialog();
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<Akun> call = apiService.postAkun(x.getEmail(),x.getPassword(),x.getNama_lengkap(),x.getUmur(),x.getJk(),x.getNoKtp(),x.getNoRek());
+        call.enqueue(new Callback<Akun>() {
+            @Override
+            public void onResponse(Call<Akun> call, Response<Akun> response) {
+                hideDialog();
+                Log.d("PostAccounts", "onResponse: " + response.body());
+                Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_LONG);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<Akun> call, Throwable t) {
+                Log.d("PostAccounts", "onFailure: " + t);
+            }
+        });
     }
 
    /* @Override
