@@ -11,7 +11,7 @@ public class Akun {
     protected static final String COL6 = "NO_KTP";
     protected static final String COL7 = "NO_REKENING";
     protected static final String COL8 = "PASSWORD";
-    protected static final String COL9 = "STATUS";
+    //protected static final String COL9 = "STATUS";
     protected static final String COL10 = "NOMINAL";
     //public static String createTable;
 
@@ -23,15 +23,15 @@ public class Akun {
     private String umur;
     private String noKtp;
     private String noRek;
-    private String status;
+    //private String status;
     private String nom;
 
-    protected static final String createTable = "CREATE TABLE " + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT, " + COL7 + " TEXT, " + COL8 + " TEXT, " +COL9 + " TEXT, " +COL10 + " TEXT" +")";
+    protected static final String createTable = "CREATE TABLE " + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT, " + COL7 + " TEXT, " + COL8 + " TEXT, " +COL10 + " TEXT" +")";
 
     public Akun(){
     }
 
-    public Akun(int id, String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String st, String nom){
+    public Akun(int id, String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String nom){
         this.id = id;
         this.email = email;
         this.password = pass;
@@ -40,11 +40,11 @@ public class Akun {
         this.umur = umur;
         this.noKtp=nktp;
         this.noRek=nrek;
-        this.status=st;
+        //this.status=st;
         this.nom = nom;
     }
 
-    public Akun(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String st, String nom){
+    public Akun(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String nom){
         this.email = email;
         this.password = pass;
         this.nama_lengkap = nL;
@@ -52,7 +52,7 @@ public class Akun {
         this.umur = umur;
         this.noKtp=nktp;
         this.noRek=nrek;
-        this.status=st;
+        //this.status=st;
         this.nom = nom;
     }
 
@@ -83,13 +83,13 @@ public class Akun {
         return noRek;
     }
 
-    public String getStatus() {
+    /*public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
+    }*/
 
     public void setNoKtp(String noKtp) {
         this.noKtp = noKtp;

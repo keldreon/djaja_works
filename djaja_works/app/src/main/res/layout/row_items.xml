@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/usaha"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/GreyLight"
@@ -26,15 +27,5 @@
         android:text="@string/text_deskripsiUsaha"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/contact_number" />
-
-    <Button
-        android:id="@+id/danai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="15dp"
-        android:background="#ffc107"
-        android:text="Danai" />
 
 </RelativeLayout>

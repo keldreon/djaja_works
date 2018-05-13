@@ -195,25 +195,6 @@
                 android:singleLine="true" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="#dcdddd"
-                android:padding="10dp"
-                android:popupBackground="#dcdddd">
-
-            </Spinner>
-        </LinearLayout>
-
-        <!-- Login Button -->
-
         <Button
             android:id="@+id/btnReg"
             android:layout_width="match_parent"

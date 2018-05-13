@@ -11,7 +11,6 @@ import android.widget.Button;
 
 import blank.djaja_works.R;
 import blank.djaja_works.models.SessionManager;
-import blank.djaja_works.view.pengusaha.add_usaha;
 
 
 public class Kelola extends Fragment {
@@ -76,7 +75,7 @@ public class Kelola extends Fragment {
             }
         });
 
-        mTes1 = session.getStatus();
+        /*mTes1 = session.getStatus();
         if(mTes1.equals("Pengusaha")) {
             btnAddusaha = view.findViewById(R.id.btnAddUsaha);
             btnAddusaha.setVisibility(view.VISIBLE);
@@ -87,7 +86,7 @@ public class Kelola extends Fragment {
                     startActivity(intent);
                 }
             });
-        }
+        }*/
 
         btntopUp = view.findViewById(R.id.btnIsi);
         btntopUp.setOnClickListener(new View.OnClickListener() {

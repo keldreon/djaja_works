@@ -1,5 +1,6 @@
 package blank.djaja_works.view;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,15 +12,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.List;
+
 import blank.djaja_works.R;
 import blank.djaja_works.models.Akun;
 import blank.djaja_works.models.DatabaseHelper;
 
 public class register extends AppCompatActivity {
-
+    private static final String TAG = register.class.getSimpleName();
     public Toolbar tb;
     private Spinner jk;
-    private Spinner st;
+    //private Spinner st;
     private Button btnDaftar;
     private EditText em;
     private EditText nL;
@@ -31,11 +34,13 @@ public class register extends AppCompatActivity {
     private String pssVal;
     private String nlVal;
     private String umrVal;
-    private String stVal;
+    //private String stVal;
     private String jkVal;
     private String nktpVal;
     private String rekVal;
     private DatabaseHelper dbhelper;
+    private ProgressDialog pDialog;
+    private List<Akun> accountsList;
 
 
     @Override
@@ -49,8 +54,8 @@ public class register extends AppCompatActivity {
         tb = findViewById(R.id.toolbar);
         tb.setTitle(R.string.text_Register);
         setSupportActionBar(tb);
-         // add back arrow to toolbar
-        if (getSupportActionBar() != null){
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -64,7 +69,7 @@ public class register extends AppCompatActivity {
         };
 
         jk = (Spinner) findViewById(R.id.jK);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, jK);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, jK);
         jk.setAdapter(adapter1);
 
 
@@ -80,7 +85,7 @@ public class register extends AppCompatActivity {
             }
         });
 
-        st = (Spinner) findViewById(R.id.status);
+        /*st = (Spinner) findViewById(R.id.status);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, status);
         st.setAdapter(adapter2);
 
@@ -95,11 +100,11 @@ public class register extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
         em = findViewById(R.id.emailReg);
         nL = findViewById(R.id.namaReg);
         pss = findViewById(R.id.pwd);
-        umr= findViewById(R.id.umur);
+        umr = findViewById(R.id.umur);
         nktp = findViewById(R.id.noKTP);
         nRek = findViewById(R.id.noRekening);
 
@@ -116,23 +121,23 @@ public class register extends AppCompatActivity {
                 nlVal = nL.getText().toString();
                 //(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String st)
                 //String ts = x.getEmail();
-                if(!unVal.isEmpty() && !pssVal.isEmpty() && !nlVal.isEmpty() && !umrVal.isEmpty() && !nktpVal.isEmpty()  && !rekVal.isEmpty()){
+                if (!unVal.isEmpty() && !pssVal.isEmpty() && !nlVal.isEmpty() && !umrVal.isEmpty() && !nktpVal.isEmpty() && !rekVal.isEmpty()) {
                     //Toast.makeText(getApplicationContext(), "Masih ada inputan yang kosong", Toast.LENGTH_LONG).show();
-                    Akun x = new Akun(unVal,pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, stVal,"0");
+                    Akun x = new Akun(unVal, pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, "0");
                     daftarkan(x);
                     //Toast.makeText(getApplicationContext(),ts,Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(),"Inputan Masih Ada Yang Kosong.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Inputan Masih Ada Yang Kosong.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    protected void daftarkan(Akun x){
+    protected void daftarkan(Akun x) {
         //daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String st)
-        dbhelper.daftarAkun(x.getEmail(), x.getPassword(), x.getNama_lengkap(), x.getJk(), x.getUmur(), x.getNoKtp(), x.getNoRek(), x.getStatus(), x.getNom());
+        dbhelper.daftarAkun(x.getEmail(), x.getPassword(), x.getNama_lengkap(), x.getJk(), x.getUmur(), x.getNoKtp(), x.getNoRek(), x.getNom());
         int b = dbhelper.getAkunCount();
-        Toast.makeText(this, "Akun = "+x.getEmail()+" Terdaftar, Jumlah akun = "+b, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Akun = " + x.getEmail() + " Terdaftar, Jumlah akun = " + b, Toast.LENGTH_SHORT).show();
     }
 
    /* @Override
@@ -144,4 +149,30 @@ public class register extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }*/
+
+    private void showDialog() {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
+
+    private void hideDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
+    }
+
+    public void end(View view) {
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbhelper.close();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
 }

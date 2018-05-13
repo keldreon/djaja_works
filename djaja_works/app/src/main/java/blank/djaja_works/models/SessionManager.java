@@ -30,7 +30,7 @@ public class SessionManager {
 
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
-    public static final String KEY_JENISUSER = "status";
+    //public static final String KEY_JENISUSER = "status";
 
     private boolean login;
 
@@ -43,7 +43,7 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String email, String name, String status){
+    public void createLoginSession(String email, String name){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
         // Storing name in pref
@@ -51,7 +51,7 @@ public class SessionManager {
         // Storing email in pref
         editor.putString(KEY_EMAIL, email);
         // Storing status in pref
-        editor.putString(KEY_JENISUSER, status);
+        //editor.putString(KEY_JENISUSER, status);
         // commit changes
         editor.commit();
     }
@@ -87,7 +87,7 @@ public class SessionManager {
         // user email
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
         // user status
-        user.put(KEY_JENISUSER, pref.getString(KEY_JENISUSER, null));
+        //user.put(KEY_JENISUSER, pref.getString(KEY_JENISUSER, null));
         // return user
         return user;
     }
@@ -129,10 +129,10 @@ public class SessionManager {
         return baru;
     }
 
-    public String getStatus(){
+    /*public String getStatus(){
         String baru = pref.getString("status","");
         return baru;
-    }
+    }*/
 
     public String getEmail(){
         String baru = pref.getString("email","");

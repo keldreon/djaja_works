@@ -170,4 +170,8 @@ public class ListFragment extends Fragment {
     public void onLowMemory() {
         super.onLowMemory();
     }
+
+    public void createList(){
+
+    }
 }
