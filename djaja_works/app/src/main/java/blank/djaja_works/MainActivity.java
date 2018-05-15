@@ -13,6 +13,10 @@ import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import blank.djaja_works.view.About;
+import blank.djaja_works.view.Kelola;
+import blank.djaja_works.view.ListFragment;
+
 public class MainActivity extends AppCompatActivity {
 
 	private static final String Tag ="Home Activity";
@@ -59,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        /*ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "Sumpah");
-        adapter.addFragment(new TwoFragment(), "Investment");
-        adapter.addFragment(new ThreeFragment(), "News");
-        adapter.addFragment(new FourFragment(), "More");
-        viewPager.setAdapter(adapter);*/
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new About(), "Sumpah");
+        adapter.addFragment(new ListFragment(), "Investment");
+        adapter.addFragment(new About(), "News");
+        adapter.addFragment(new Kelola(), "More");
+        viewPager.setAdapter(adapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
