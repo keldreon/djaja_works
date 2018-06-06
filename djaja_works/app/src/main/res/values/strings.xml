@@ -53,4 +53,6 @@
     <string name="text_pinjamkan">Pinjamkan</string>
     <string name="text_totPeminjaman">Total Peminjaman</string>
 
+    <string name="text_nEmail">Email</string>
+
 </resources>

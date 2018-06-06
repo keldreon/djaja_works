@@ -1,9 +1,11 @@
 package blank.djaja_works.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,7 +81,7 @@ public class Kelola extends Fragment {
         {
             @Override
             public void onClick(View v) {
-                logoutUser();
+                konfirmasi();
             }
         });
 
@@ -132,5 +134,33 @@ public class Kelola extends Fragment {
         intent = new Intent(getActivity().getApplicationContext(), login.class);
         startActivity(intent);
         getActivity().finish();
+    }
+
+    public void konfirmasi(){
+        AlertDialog.Builder alertConfirmasi = new AlertDialog.Builder(getContext());
+        alertConfirmasi.setTitle("Konfirmasi");
+        alertConfirmasi.setMessage("Apakah anda yakin mau Logout?");
+        alertConfirmasi.setCancelable(false)
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog alertDialog = alertConfirmasi.create();
+        alertDialog.show();
+
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
     }
 }

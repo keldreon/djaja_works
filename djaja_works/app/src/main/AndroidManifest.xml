@@ -13,21 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.login" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".view.register" />
-        <activity android:name=".view.pengusaha.add_usaha" />
-        <activity android:name=".view.topup" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".view.login" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.register" android:screenOrientation="portrait"/>
+        <activity android:name=".view.pengusaha.add_usaha" android:screenOrientation="portrait"/>
+        <activity android:name=".view.topup" android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.profilakun" />
-        <activity android:name=".view.Proposal" />
-        <activity android:name=".view.Topdown"></activity>
+        <activity android:name=".view.profilakun" android:screenOrientation="portrait"/>
+        <activity android:name=".view.Proposal" android:screenOrientation="portrait"/>
+        <activity android:name=".view.Topdown" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

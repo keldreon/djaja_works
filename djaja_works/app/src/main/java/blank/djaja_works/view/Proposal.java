@@ -163,35 +163,35 @@ public class Proposal extends AppCompatActivity {
     public void pinjamkan(int id, String val, final int price){
         showDialog();
         pDialog.setMessage("Sedang Memroses...");
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Kondisi> call = apiService.putPiutang(id,val);
-        call.enqueue(new Callback<Kondisi>() {
-            @Override
-            public void onResponse(Call<Kondisi> call, Response<Kondisi> response) {
-                st = response.body();
-                Log.e("TAG", "response 33: "+new Gson().toJson(response.body()) );
-                String stat = st.getStatus();
-                if(stat.equals("Success")){
-                    //do_more
-                    int aw = sm.getSaldo();
-                    if(aw > price){
-                        int baru = aw - price;
-                        //Toast.makeText(c, "Sukses", Toast.LENGTH_LONG).show();
+        int aw = sm.getSaldo();
+        if(aw > price){
+            //Toast.makeText(c, "Sukses", Toast.LENGTH_LONG).show();
+            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+            Call<Kondisi> call = apiService.putPiutang(id,val);
+            call.enqueue(new Callback<Kondisi>() {
+                @Override
+                public void onResponse(Call<Kondisi> call, Response<Kondisi> response) {
+                    st = response.body();
+                    Log.e("TAG", "response 33: "+new Gson().toJson(response.body()) );
+                    String stat = st.getStatus();
+                    int sal = sm.getSaldo();
+                    if(stat.equals("Success")){
+                        //do_more
+                        int baru =  sal - price;
                         updateAkun(baru);
-                    }else{
-                        hideDialog();
-                        Toast.makeText(c, "Coin tidak cukup. Silakan Toopup.", Toast.LENGTH_LONG).show();
                     }
                 }
-            }
-
-            @Override
-            public void onFailure(Call<Kondisi> call, Throwable t) {
-                hideDialog();
-                Log.e(TAG, "onFailure: ", t);
-                Toast.makeText(c, "connection error", Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Kondisi> call, Throwable t) {
+                    hideDialog();
+                    Log.e(TAG, "onFailure: ", t);
+                    Toast.makeText(c, "connection error", Toast.LENGTH_LONG).show();
+                }
+            });
+        }else{
+            hideDialog();
+            Toast.makeText(getBaseContext(), "Coin anda tidak cukup. Silakan Toopup.", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void showDialog() {
@@ -209,14 +209,13 @@ public class Proposal extends AppCompatActivity {
         String email = sm.getEmail();
         String nama = sm.getNama();
         String usia = sm.getUsia();
-        int uia = Integer.valueOf(usia);
         String pss = sm.getPss();
         String nPend = sm.getNPend();
         String nRek = sm.getNrek();
         String jk = sm.getJK();
-        int uang = Hbaru;
+        //int uang = Hbaru;
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Akun> call = apiService.putAkun(email,pss,nama,uia,jk,nPend,nRek,uang);
+        Call<Akun> call = apiService.putAkun(email,pss,nama,usia,jk,nPend,nRek,Hbaru);
         call.enqueue(new Callback<Akun>() {
             @Override
             public void onResponse(Call<Akun> call, Response<Akun> response) {

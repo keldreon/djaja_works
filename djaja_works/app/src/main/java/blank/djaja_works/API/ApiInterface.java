@@ -34,7 +34,7 @@ public interface ApiInterface {
     Call<Akun> putAkun(@Field("email") String email,
                            @Field("password") String password,
                            @Field("nama_lengkap") String nL,
-                           @Field("usia") int umur,
+                           @Field("usia") String umur,
                            @Field("jk") String jk,
                            @Field("n_ktp") String n_ktp,
                            @Field("n_rek") String n_rek,
@@ -53,7 +53,11 @@ public interface ApiInterface {
     Call<Kondisi> putPiutang(@Field("id_calon") int id, @Field("acc") String st);
 
     @GET("Topup_Api/index_get")
-    Call<List<Topup>> getTopupData(@Query("email") String username, @Query("password") String password);
+    Call<List<Topup>> getTopupData(@Query("email") String username, @Query("kode") String password);
+
+    @FormUrlEncoded
+    @PUT("Topup_Api/index_put")
+    Call<Kondisi> putTopupData(@Field("kode") String username);
 
     /*@FormUrlEncoded
     @DELETE("Peminjam_Api")

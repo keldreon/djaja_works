@@ -236,7 +236,7 @@ public class SessionManager {
     }
 
     public int getSaldo(){
-        int bar = pref.getInt(KEY_SALDO, Integer.parseInt(""));
+        int bar = pref.getInt(KEY_SALDO,0);
         return bar;
     }
 

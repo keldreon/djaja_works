@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import blank.djaja_works.API.ApiClient;
@@ -146,6 +148,7 @@ public class login extends AppCompatActivity {
             public void onResponse(Call<List<Akun>> call, Response<List<Akun>> response) {
                 //Toast.makeText(getApplicationContext(),)
                 accountsList = response.body();
+                Log.e("TAG", "response 33: " + new Gson().toJson(response.body()));
                 hideDialog();
                 if (response.body().size() != 0){
                     /*ed = sp.edit();
