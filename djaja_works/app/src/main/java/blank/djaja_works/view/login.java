@@ -37,6 +37,7 @@ public class login extends AppCompatActivity {
     private Button btnLogin;
     private String nama;
     private String pwdi;
+    private int coin;
     private SessionManager session;
     private ProgressDialog pDialog;
     private List<Akun> accountsList;
@@ -117,7 +118,9 @@ public class login extends AppCompatActivity {
 
     public void finis(Akun h){
         /*if(Objects.equals(response, "true")) {*/
-        session.createLoginSession(h.getEmail(),h.getNama_lengkap());
+        //createLoginSession(String email, String name, int saldo, String usia, String jk, String nPend, String nRek, String pss){
+        coin = h.getNom();
+        session.createLoginSession(h.getEmail(),h.getNama_lengkap(),coin, h.getUmur(), h.getJk(), h.getNoKtp(), h.getNoRek(), h.getPassword());
         nIntent = new Intent(login.this, MainActivity.class);
         startActivity(nIntent);
         finish();
@@ -149,7 +152,9 @@ public class login extends AppCompatActivity {
                     ed.putString("email", accountsList.get(0).getEmail());
                     ed.putBoolean("logged", true);
                     ed.apply();*/
-                    session.createLoginSession(accountsList.get(0).getEmail(),accountsList.get(0).getNama_lengkap());
+                    int tes = accountsList.get(0).getNom();
+                    //createLoginSession(String email, String name, int saldo, String usia, String jk, String nPend, String nRek, String pss){
+                    session.createLoginSession(accountsList.get(0).getEmail(),accountsList.get(0).getNama_lengkap(),tes, accountsList.get(0).getUmur(), accountsList.get(0).getJk(), accountsList.get(0).getNoKtp(), accountsList.get(0).getNoRek(), accountsList.get(0).getPassword());
                     Toast.makeText(c, "Akun "+accountsList.get(0).getEmail()+", "+ accountsList.get(0).getNama_lengkap(), Toast.LENGTH_LONG).show();
                     finish();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));

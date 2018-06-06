@@ -34,4 +34,5 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     public Context getContext() {
         return context;
     }
+
 }

@@ -7,20 +7,33 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import blank.djaja_works.API.ApiClient;
+import blank.djaja_works.API.ApiInterface;
 import blank.djaja_works.R;
 import blank.djaja_works.adapter.MyDividerItemDecoration;
 import blank.djaja_works.adapter.adapter;
 import blank.djaja_works.models.DatabaseHelper;
 import blank.djaja_works.models.Investment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +58,8 @@ public class ListFragment extends Fragment {
     private RecyclerView rcView;
     private TextView noListView;
     private DatabaseHelper db;
+    private ShimmerFrameLayout mShimmerViewContainer;
+    private RelativeLayout relativeLayout;
 
     private OnFragmentInteractionListener mListener;
 
@@ -84,16 +99,23 @@ public class ListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
+        relativeLayout = view.findViewById(R.id.rel_view);
+
+        mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container);
+
         cdLayout = view.findViewById(R.id.coordinator_layout);
         rcView = view.findViewById(R.id.recycler_view);
         noListView = view.findViewById(R.id.not_found);
 
         db = new DatabaseHelper(getContext());
 
-        if(invList.size()!=db.getInvCount()){
+        /*if(invList.size()!=db.getInvCount()){
             invList.clear();
         }
-        invList.addAll(db.getAllInvest());
+        invList.addAll(db.getAllInvest());*/
+
+        relativeLayout.setVisibility(View.GONE);
+        noListView.setVisibility(View.GONE);
 
         mAdapter = new adapter(invList,getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext().getApplicationContext());
@@ -101,20 +123,21 @@ public class ListFragment extends Fragment {
         rcView.setItemAnimator(new DefaultItemAnimator());
         rcView.addItemDecoration(new MyDividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL, 16));
         rcView.setAdapter(mAdapter);
+
+        /*if(NetworkUtils.isNetworkConnected(this)){
+        }else{}*/
+        createList();
         /*int tes = db.getInvCount();
         if (tes > 0) {
             noListView.setVisibility(View.GONE);
         } else {
             noListView.setVisibility(View.VISIBLE);
         }*/
-
-        toggleEmptyNotes();
-
         return view;
     }
 
     private void toggleEmptyNotes() {
-        int tes = db.getInvCount();
+        int tes = mAdapter.getItemCount();
         if (tes > 0) {
             noListView.setVisibility(View.GONE);
         } else {
@@ -129,14 +152,13 @@ public class ListFragment extends Fragment {
         }
     }
 
-/*    @Override
+    /*@Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -145,6 +167,8 @@ public class ListFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }*/
+
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -171,7 +195,43 @@ public class ListFragment extends Fragment {
         super.onLowMemory();
     }
 
-    public void createList(){
+    @Override
+    public void onPause() {
+        mShimmerViewContainer.stopShimmer();
+        super.onPause();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mShimmerViewContainer.startShimmer();
+    }
+
+    private List<Investment> apiInvest;
+    public void createList(){
+        mShimmerViewContainer.startShimmer();
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<List<Investment>> call = apiService.getInvestList();
+        call.enqueue(new Callback<List<Investment>>() {
+            @Override
+            public void onResponse(Call<List<Investment>> call, Response<List<Investment>> response) {
+                apiInvest = response.body();
+                mAdapter.swap(apiInvest);
+                toggleEmptyNotes();
+                relativeLayout.setVisibility(View.VISIBLE);
+                mShimmerViewContainer.stopShimmer();
+                mShimmerViewContainer.setVisibility(View.GONE);
+                Log.e("TAG", "response 33: "+new Gson().toJson(response.body()) );
+            }
+
+            @Override
+            public void onFailure(Call<List<Investment>> call, Throwable t) {
+                mShimmerViewContainer.stopShimmer();
+                mShimmerViewContainer.setVisibility(View.GONE);
+                toggleEmptyNotes();
+                Log.e(TAG, "onFailure: ", t);
+                Toast.makeText(getContext(), "connection error", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

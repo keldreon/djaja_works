@@ -93,7 +93,7 @@ public class add_usaha extends AppCompatActivity {
                     nomModalValParse = Integer.parseInt(nomModalVal);
                     gBulananValParse = Integer.parseInt(gBulananVal);
                     uName = session.getNama();
-                    Investment x = new Investment(uName,nUsahaVal, dUsahaVal, gBulananValParse, nomModalValParse,"Meminta");
+                    Investment x = new Investment(uName,nUsahaVal, dUsahaVal,nomModalVal, gBulananValParse,"Meminta");
                     daftarUsaha(x);
 
                 }else{
@@ -108,7 +108,7 @@ public class add_usaha extends AppCompatActivity {
     }
 
     public void daftarUsaha(Investment x){
-        db.daftarUsaha(x.getNama_lengkap(), x.getNamaUsaha(),x.getDeskripsi(), x.getgBulanan(), x.getNominal(), x.getStatus());
+        db.daftarUsaha(x.getNama_lengkap(), x.getNamaUsaha(),x.getDeskripsi(), x.getNominal(), x.getgBulanan(), x.getStatus());
         int baru = db.getInvCount();
         Toast.makeText(getApplicationContext(), "Jumlah Usaha : "+baru, Toast.LENGTH_LONG).show();
         akhiri();

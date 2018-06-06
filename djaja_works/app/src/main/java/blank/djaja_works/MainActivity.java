@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     public Toolbar toolbar;
     boolean doubleBackToExitPressedOnce = false;
     private int[] tabIcons = {
-            R.drawable.ic_map_black_24dp,
             R.drawable.ic_monetization_on_black_24dp,
             R.drawable.ic_event_note_black_24dp,
             R.drawable.ic_more_horiz_black_24dp
@@ -59,12 +58,11 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
 
     private void setupViewPager(ViewPager viewPager) {
+        //dashboard menyusul
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new About(), "Sumpah");
         adapter.addFragment(new ListFragment(), "Investment");
         adapter.addFragment(new About(), "News");
         adapter.addFragment(new Kelola(), "More");

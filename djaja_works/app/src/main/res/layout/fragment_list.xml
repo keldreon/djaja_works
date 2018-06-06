@@ -4,9 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="blank.djaja_works.view.ListFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:shimmer_duration="1000">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/row_items" />
+
+        </RelativeLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <RelativeLayout
+        android:id="@+id/rel_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -14,19 +34,18 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!-- TODO: Update blank fragment layout -->
-
-        <TextView
-            android:id="@+id/not_found"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_top_no_notes"
-            android:text="@string/invest_not_available"
-            android:textSize="@dimen/list_no_notes"/>
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/not_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/margin_top_no_notes"
+        android:text="@string/invest_not_available"
+        android:textSize="@dimen/list_no_notes"/>
 
 </android.support.design.widget.CoordinatorLayout>

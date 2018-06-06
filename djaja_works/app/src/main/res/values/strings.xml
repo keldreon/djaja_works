@@ -4,6 +4,7 @@
     <string name="hint_email">Email</string>
     <string name="hint_pwd">Password</string>
     <string name="text_login">Login</string>
+    <string name="text_logout">Logout</string>
     <string name="text_not_member">Bukan Anggota? Daftar Disini.</string>
     <string name="text_forget">Lupa Password?</string>
     <string name="text_Username">Nama Lengkap</string>
@@ -28,24 +29,28 @@
     <!--Teks di menu add_usaha-->
     <string name="text_judulAddUsaha">Daftarkan Usaha</string>
     <string name="text_nUsaha">Nama Usaha</string>
+    <string name="text_nPUsaha">Nama Pengusaha</string>
     <string name="text_dUsaha">Deskripsi Usaha</string>
-    <string name="text_Llat">Latitude</string>
-    <string name="text_Llong">Longitude</string>
-    <string name="text_Lokasi">Lokasi</string>
     <string name="text_uBulanan">Penghasilan Bulanan</string>
     <string name="text_modal">Butuh Modal</string>
     <string name="text_daftarUsaha">Daftarkan</string>
     <string name="text_noteUsaha">Pastikan Usaha yang anda bangun minimal 1 bulan.</string>
+    <string name="text_noteDaftar">Untuk Menggunakan Layanan ini, anda harus berusia minimal 18 tahun.</string>
 
 
     <!--Teks di topup-->
     <string name="text_judulIsiUlang">Top Up Djaya Cash</string>
     <string name="blank">_____</string>
-    <string name="Nama">Nama : </string>
-    <string name="Cash">Uang :</string>
+    <string name="Nama">Nama </string>
+    <string name="Cash">Uang </string>
     <string name="text_inVoucher">Masukkan Kode Voucher</string>
     <string name="text_hintVoucher">Kode Voucher</string>
     <string name="text_conCode">qxy6372iihqb</string>
     <string name="text_nTopup">Topup</string>
+
+
+    <string name="text_nProfil">Profil</string>
+    <string name="text_pinjamkan">Pinjamkan</string>
+    <string name="text_totPeminjaman">Total Peminjaman</string>
 
 </resources>

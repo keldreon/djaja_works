@@ -25,6 +25,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class register extends AppCompatActivity {
+
+    //hapus no_ktp
     private static final String TAG = register.class.getSimpleName();
     public Toolbar tb;
     private Spinner jk;
@@ -132,7 +134,7 @@ public class register extends AppCompatActivity {
                 //String ts = x.getEmail();
                 if (!unVal.isEmpty() && !pssVal.isEmpty() && !nlVal.isEmpty() && !umrVal.isEmpty() && !nktpVal.isEmpty() && !rekVal.isEmpty()) {
                     //Toast.makeText(getApplicationContext(), "Masih ada inputan yang kosong", Toast.LENGTH_LONG).show();
-                    Akun x = new Akun(unVal, pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, "0");
+                    Akun x = new Akun(unVal, pssVal, nlVal, jkVal, umrVal, nktpVal, rekVal, 0);
                     regisOL(x);
                     //Toast.makeText(getApplicationContext(),ts,Toast.LENGTH_SHORT).show();
                 } else {

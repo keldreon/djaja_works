@@ -27,14 +27,14 @@ public class Akun {
     @SerializedName("n_ktp_peminjam") @Expose private String noKtp;
     @SerializedName("n_rek_peminjam") @Expose private String noRek;
     //private String status;
-    @SerializedName("Saldo_peminjam") @Expose private String nom;
+    @SerializedName("Saldo_peminjam") @Expose private int nom;
 
     protected static final String createTable = "CREATE TABLE " + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " TEXT, " + COL7 + " TEXT, " + COL8 + " TEXT, " +COL10 + " TEXT" +")";
 
     public Akun(){
     }
 
-    public Akun(int id, String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String nom){
+    public Akun(int id, String email, String pass, String nL, String jK, String umur, String nktp, String nrek, int nom){
         this.id = id;
         this.email = email;
         this.password = pass;
@@ -47,7 +47,7 @@ public class Akun {
         this.nom = nom;
     }
 
-    public Akun(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, String nom){
+    public Akun(String email, String pass, String nL, String jK, String umur, String nktp, String nrek, int nom){
         this.email = email;
         this.password = pass;
         this.nama_lengkap = nL;
@@ -134,11 +134,11 @@ public class Akun {
         this.nama_lengkap = nama_lengkap;
     }
 
-    public String getNom() {
+    public int getNom() {
         return nom;
     }
 
-    public void setNom(String nom) {
+    public void setNom(int nom) {
         this.nom = nom;
     }
 }

@@ -3,7 +3,9 @@ package blank.djaja_works.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Investment {
+import java.io.Serializable;
+
+public class Investment implements Serializable{
     //Wilayah Investment
     //data investasi
     protected static final String TABLE_NAME = "investment";
@@ -20,17 +22,17 @@ public class Investment {
     @SerializedName("nama_pengusaha") @Expose private String nama_lengkap;
     @SerializedName("nama_usaha") @Expose private String namaUsaha;
     @SerializedName("deskripsi") @Expose private String deskripsi;
-    private int gBulanan;
-    private int nominal;
-    private String status;
+    @SerializedName("rentang_waktu")  @Expose private String gBulanan;
+    @SerializedName("pengajuan_dana")  @Expose private int nominal;
+    @SerializedName("acc_peminjaman")  @Expose private String status;
 
     protected static final String createTable = "CREATE TABLE "
             + TABLE_NAME + " (" + COL1 + " INTEGER PRIMARY KEY, " + COL2 + " TEXT, "
-            + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + COL6 + " INTEGER, " + COL7 + " TEXT "+")";
+            + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " TEXT, " + COL6 + " INTEGER, " + COL7 + " TEXT "+")";
 
     public Investment(){}
 
-    public Investment(int id, String un, String nU, String d, int gj, int nom, String st){
+    public Investment(int id, String un, String nU, String d, String gj, int nom, String st){
         this.id = id;
         this.nama_lengkap = un;
         this.namaUsaha = nU;
@@ -40,7 +42,7 @@ public class Investment {
         this.status = st;
     }
 
-    public Investment(String un, String nU, String d,  int gj, int nom, String st){
+    public Investment(String un, String nU, String d,  String gj, int nom, String st){
         this.nama_lengkap = un;
         this.namaUsaha = nU;
         this.deskripsi = d;
@@ -99,11 +101,11 @@ public class Investment {
         return status;
     }
 
-    public int getgBulanan() {
+    public String getgBulanan() {
         return gBulanan;
     }
 
-    public void setgBulanan(int gBulanan) {
+    public void setgBulanan(String gBulanan) {
         this.gBulanan = gBulanan;
     }
 }

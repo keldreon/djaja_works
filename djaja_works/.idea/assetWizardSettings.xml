@@ -34,8 +34,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="F:\projek galih\projek lain\icon_djaja\icon_ver2\icon21_alter.png" />
-                                      <entry key="outputName" value="ic_topup" />
+                                      <entry key="imageAsset" value="F:\projek galih\projek lain\icon_djaja\icon_ver2\icon22_alter.png" />
+                                      <entry key="outputName" value="ic_help" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -51,7 +51,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="52" />
+                                                <entry key="scalingPercent" value="57" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -63,7 +63,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="474443" />
-                                      <entry key="foregroundImage" value="F:\projek galih\projek lain\icon_djaja\icon1_alter.svg" />
+                                      <entry key="foregroundImage" value="F:\projek galih\projek lain\icon_djaja\icon_ver2\icon1_alter.svg" />
                                     </map>
                                   </option>
                                 </PersistentState>

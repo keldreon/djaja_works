@@ -4,8 +4,9 @@ import java.util.List;
 
 import blank.djaja_works.models.Akun;
 import blank.djaja_works.models.Investment;
+import blank.djaja_works.models.Kondisi;
+import blank.djaja_works.models.Topup;
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -36,14 +37,25 @@ public interface ApiInterface {
                            @Field("usia") int umur,
                            @Field("jk") String jk,
                            @Field("n_ktp") String n_ktp,
-                           @Field("n_rek") String n_rek);
+                           @Field("n_rek") String n_rek,
+                           @Field("coin") int nom);
     /*Account End*/
 
     /*InvestList*/
     @GET("Peminjam_Api")
     Call<List<Investment>> getInvestList();
 
+    @GET("Peminjam_Api")
+    Call<List<Investment>> getInvestList(@Query("id_calon") int kode);
+
     @FormUrlEncoded
+    @PUT("Peminjam_Api")
+    Call<Kondisi> putPiutang(@Field("id_calon") int id, @Field("acc") String st);
+
+    @GET("Topup_Api/index_get")
+    Call<List<Topup>> getTopupData(@Query("email") String username, @Query("password") String password);
+
+    /*@FormUrlEncoded
     @DELETE("Peminjam_Api")
-    Call<List<Investment>> deleteSpam(@Query("id_calon") int kode);
+    Call<List<Investment>> deleteSpam(@Query("id_calon") int kode);*/
 }

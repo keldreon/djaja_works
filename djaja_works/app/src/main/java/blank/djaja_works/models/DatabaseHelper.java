@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, String nom){
+    public void daftarAkun(String email, String pass, String nL, String jK, String umr, String nktp, String nrek, int nom){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Akun.COL2, email);
@@ -73,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 cr.getString(cr.getColumnIndex(Akun.COL5)),
                 cr.getString(cr.getColumnIndex(Akun.COL6)),
                 cr.getString(cr.getColumnIndex(Akun.COL7)),
-                cr.getString(cr.getColumnIndex(Akun.COL10)));
+                cr.getInt(cr.getColumnIndex(Akun.COL10)));
         //(int id, String uname, String email, String pass, String jK, String nktp, String nrek, String st)
         cr.close();
         return akun;
@@ -96,7 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 ak.setNoKtp(cr.getString(cr.getColumnIndex(Akun.COL4)));
                 ak.setUmur(cr.getString(cr.getColumnIndex(Akun.COL5)));
                 ak.setNoRek(cr.getString(cr.getColumnIndex(Akun.COL6)));
-                ak.setNom(cr.getString(cr.getColumnIndex(Akun.COL10)));
+                ak.setNom(cr.getInt(cr.getColumnIndex(Akun.COL10)));
                 akun.add(ak);
             }while (cr.moveToNext());
         }
@@ -144,7 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 ak.setNama_lengkap(cr.getString(cr.getColumnIndex(Investment.COL2)));
                 ak.setNamaUsaha(cr.getString(cr.getColumnIndex(Investment.COL3)));
                 ak.setDeskripsi(cr.getString(cr.getColumnIndex(Investment.COL4)));
-                ak.setgBulanan(cr.getInt(cr.getColumnIndex(Investment.COL5)));
+                ak.setgBulanan(cr.getString(cr.getColumnIndex(Investment.COL5)));
                 ak.setNominal(cr.getInt(cr.getColumnIndex(Investment.COL6)));
                 ak.setStatus(cr.getString(cr.getColumnIndex(Investment.COL7)));
                 inv.add(ak);
@@ -169,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 cr.getString(cr.getColumnIndex(Investment.COL2)),
                 cr.getString(cr.getColumnIndex(Investment.COL3)),
                 cr.getString(cr.getColumnIndex(Investment.COL4)),
-                cr.getInt(cr.getColumnIndex(Investment.COL5)),
+                cr.getString(cr.getColumnIndex(Investment.COL5)),
                 cr.getInt(cr.getColumnIndex(Investment.COL6)),
                 cr.getString(cr.getColumnIndex(Investment.COL7)));
         cr.close();
@@ -185,14 +185,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return count;
     }
 
-    public void daftarUsaha(String un, String nU, String d, int nom, int gj, String st){
+    public void daftarUsaha(String un, String nU, String d, int nom, String gj, String st){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Investment.COL2, un);
         values.put(Investment.COL3, nU);
         values.put(Investment.COL4, d);
-        values.put(Investment.COL5, nom);
-        values.put(Investment.COL6, gj);
+        values.put(Investment.COL5, gj);
+        values.put(Investment.COL6, nom);
         values.put(Investment.COL7, st);
         Log.d(TAG, "Hasil " +values.get(Investment.COL2)+", "+values.get(Investment.COL3));
         db.insert(Investment.TABLE_NAME,null, values);

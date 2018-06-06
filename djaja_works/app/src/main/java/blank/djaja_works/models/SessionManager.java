@@ -26,10 +26,17 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // User name (make variable public to access from outside)
+    public static final String KEY_EMAIL = "email";
     public static final String KEY_NAME = "name";
+    public static final String KEY_USIA = "usia";
+    public static final String KEY_JK = "jk";
+    public static final String KEY_NREK = "n_rek";
+    public static final String KEY_NPEND = "n_pend";
+    public static final String KEY_SALDO = "saldo";
+    public static final String KEY_PSS = "password";
+
 
     // Email address (make variable public to access from outside)
-    public static final String KEY_EMAIL = "email";
     //public static final String KEY_JENISUSER = "status";
 
     private boolean login;
@@ -43,7 +50,7 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String email, String name){
+    public void createLoginSession(String email, String name, int saldo, String usia, String jk, String nPend, String nRek, String pss){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
         // Storing name in pref
@@ -51,6 +58,31 @@ public class SessionManager {
         // Storing email in pref
         editor.putString(KEY_EMAIL, email);
         // Storing status in pref
+        editor.putInt(KEY_SALDO, saldo);
+
+        editor.putString(KEY_JK, jk);
+        editor.putString(KEY_USIA, usia);
+        editor.putString(KEY_NPEND, nPend);
+        editor.putString(KEY_NREK, nRek);
+        editor.putString(KEY_PSS,pss);
+        //editor.putString(KEY_JENISUSER, status);
+        // commit changes
+        editor.commit();
+    }
+
+    public void reWriteAkun(String email, String name, int saldo, String usia, String jk, String nPend, String nRek, String pss){
+        // Storing name in pref
+        editor.putString(KEY_NAME, name);
+        // Storing email in pref
+        editor.putString(KEY_EMAIL, email);
+        // Storing status in pref
+        editor.putInt(KEY_SALDO, saldo);
+
+        editor.putString(KEY_JK, jk);
+        editor.putString(KEY_USIA, usia);
+        editor.putString(KEY_NPEND, nPend);
+        editor.putString(KEY_NREK, nRek);
+        editor.putString(KEY_PSS,pss);
         //editor.putString(KEY_JENISUSER, status);
         // commit changes
         editor.commit();
@@ -129,13 +161,83 @@ public class SessionManager {
         return baru;
     }
 
+    public void setNama(String nama){
+        editor.putString(KEY_NAME,nama);
+        editor.commit();
+    }
+
+    public void setEmail(String nama){
+        editor.putString(KEY_EMAIL,nama);
+        editor.commit();
+    }
+
+    public void setUsia(String nama){
+        editor.putString(KEY_USIA,nama);
+        editor.commit();
+    }
+
+    public void setJK(String nama){
+        editor.putString(KEY_JK,nama);
+        editor.commit();
+    }
+
+    public void setNPend(String nama){
+        editor.putString(KEY_NPEND,nama);
+        editor.commit();
+    }
+
+    public void setRek(String nama){
+        editor.putString(KEY_NREK,nama);
+        editor.commit();
+    }
+
+    public void setPss(String nama){
+        editor.putString(KEY_PSS,nama);
+        editor.commit();
+    }
+
     /*public String getStatus(){
         String baru = pref.getString("status","");
         return baru;
     }*/
-
     public String getEmail(){
         String baru = pref.getString("email","");
         return baru;
     }
+
+    public String getJK(){
+        String baru = pref.getString(KEY_JK,"");
+        return baru;
+    }
+
+    public String getUsia(){
+        String baru = pref.getString(KEY_USIA,"");
+        return baru;
+    }
+
+    public String getNPend(){
+        String baru = pref.getString(KEY_NPEND,"");
+        return baru;
+    }
+
+    public String getNrek(){
+        String baru = pref.getString(KEY_NREK,"");
+        return baru;
+    }
+
+    public String getPss(){
+        String baru = pref.getString(KEY_PSS,"");
+        return baru;
+    }
+
+    public void setSaldo(int sal){
+        editor.putInt(KEY_SALDO, sal);
+        editor.commit();
+    }
+
+    public int getSaldo(){
+        int bar = pref.getInt(KEY_SALDO, Integer.parseInt(""));
+        return bar;
+    }
+
 }

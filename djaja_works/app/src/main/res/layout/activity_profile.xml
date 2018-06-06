@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="blank.djaja_works.profilakun">
+    tools:context="blank.djaja_works.view.profilakun">
 
     <LinearLayout
         android:layout_width="match_parent"

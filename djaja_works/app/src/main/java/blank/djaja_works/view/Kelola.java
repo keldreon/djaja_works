@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import blank.djaja_works.profilakun;
 import blank.djaja_works.R;
 import blank.djaja_works.models.SessionManager;
 
@@ -29,6 +29,9 @@ public class Kelola extends Fragment {
     private Intent intent, inten1;
     private String mTes1;
     private Button btntopUp, btnProf;
+    private CardView cvTopup;
+    private CardView cvHelp;
+    private CardView cvProfil;
 
     public Kelola() {
         // Required empty public constructor
@@ -67,6 +70,10 @@ public class Kelola extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_kelola, container, false);
         session = new SessionManager(getContext());
+        cvProfil = view.findViewById(R.id.profilPress);
+        cvTopup = view.findViewById(R.id.topupPress);
+        cvHelp = view.findViewById(R.id.helpPress);
+
         btnLogout = view.findViewById(R.id.btnTest4);
         btnLogout.setOnClickListener(new View.OnClickListener()
         {
@@ -89,8 +96,7 @@ public class Kelola extends Fragment {
             });
         }*/
 
-        btnProf = view.findViewById(R.id.btnProfil);
-        btnProf.setOnClickListener(new View.OnClickListener() {
+        cvProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inten1 = new Intent(getContext(), profilakun.class);
@@ -98,8 +104,7 @@ public class Kelola extends Fragment {
             }
         });
 
-        btntopUp = view.findViewById(R.id.btnIsi);
-        btntopUp.setOnClickListener(new View.OnClickListener() {
+        cvTopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), topup.class);
